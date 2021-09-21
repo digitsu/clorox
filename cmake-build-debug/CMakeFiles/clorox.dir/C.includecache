@@ -43,6 +43,8 @@ debug.h
 /Users/digitsu/CLionProjects/clorox/debug.h
 
 /Users/digitsu/CLionProjects/clorox/compiler.h
+object.h
+/Users/digitsu/CLionProjects/clorox/object.h
 vm.h
 /Users/digitsu/CLionProjects/clorox/vm.h
 
@@ -79,26 +81,44 @@ stdlib.h
 -
 memory.h
 /Users/digitsu/CLionProjects/clorox/memory.h
+vm.h
+/Users/digitsu/CLionProjects/clorox/vm.h
 
 /Users/digitsu/CLionProjects/clorox/memory.h
 common.h
 /Users/digitsu/CLionProjects/clorox/common.h
+object.h
+/Users/digitsu/CLionProjects/clorox/object.h
 
-/Users/digitsu/CLionProjects/clorox/scanner.c
+/Users/digitsu/CLionProjects/clorox/object.c
 stdio.h
 -
 string.h
 -
+memory.h
+/Users/digitsu/CLionProjects/clorox/memory.h
+object.h
+/Users/digitsu/CLionProjects/clorox/object.h
+value.h
+/Users/digitsu/CLionProjects/clorox/value.h
+vm.h
+/Users/digitsu/CLionProjects/clorox/vm.h
+
+/Users/digitsu/CLionProjects/clorox/object.h
 common.h
 /Users/digitsu/CLionProjects/clorox/common.h
-scanner.h
-/Users/digitsu/CLionProjects/clorox/scanner.h
+value.h
+/Users/digitsu/CLionProjects/clorox/value.h
 
 /Users/digitsu/CLionProjects/clorox/scanner.h
 
 /Users/digitsu/CLionProjects/clorox/value.c
 stdio.h
 -
+string.h
+-
+object.h
+/Users/digitsu/CLionProjects/clorox/object.h
 memory.h
 /Users/digitsu/CLionProjects/clorox/memory.h
 value.h
@@ -109,7 +129,11 @@ common.h
 /Users/digitsu/CLionProjects/clorox/common.h
 
 /Users/digitsu/CLionProjects/clorox/vm.c
+stdarg.h
+-
 stdio.h
+-
+string.h
 -
 common.h
 /Users/digitsu/CLionProjects/clorox/common.h
@@ -117,6 +141,10 @@ compiler.h
 /Users/digitsu/CLionProjects/clorox/compiler.h
 debug.h
 /Users/digitsu/CLionProjects/clorox/debug.h
+object.h
+/Users/digitsu/CLionProjects/clorox/object.h
+memory.h
+/Users/digitsu/CLionProjects/clorox/memory.h
 vm.h
 /Users/digitsu/CLionProjects/clorox/vm.h
 

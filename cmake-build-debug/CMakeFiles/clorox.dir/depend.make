@@ -6,6 +6,7 @@ CMakeFiles/clorox.dir/chunk.c.o: \
  ../chunk.h \
  ../common.h \
  ../memory.h \
+ ../object.h \
  ../value.h
 CMakeFiles/clorox.dir/compiler.c.o: \
  ../chunk.h \
@@ -13,6 +14,7 @@ CMakeFiles/clorox.dir/compiler.c.o: \
  ../compiler.c \
  ../compiler.h \
  ../debug.h \
+ ../object.h \
  ../scanner.h \
  ../value.h \
  ../vm.h
@@ -30,9 +32,21 @@ CMakeFiles/clorox.dir/main.c.o: \
  ../value.h \
  ../vm.h
 CMakeFiles/clorox.dir/memory.c.o: \
+ ../chunk.h \
  ../common.h \
  ../memory.c \
- ../memory.h
+ ../memory.h \
+ ../object.h \
+ ../value.h \
+ ../vm.h
+CMakeFiles/clorox.dir/object.c.o: \
+ ../chunk.h \
+ ../common.h \
+ ../memory.h \
+ ../object.c \
+ ../object.h \
+ ../value.h \
+ ../vm.h
 CMakeFiles/clorox.dir/scanner.c.o: \
  ../common.h \
  ../scanner.c \
@@ -40,6 +54,7 @@ CMakeFiles/clorox.dir/scanner.c.o: \
 CMakeFiles/clorox.dir/value.c.o: \
  ../common.h \
  ../memory.h \
+ ../object.h \
  ../value.c \
  ../value.h
 CMakeFiles/clorox.dir/vm.c.o: \
@@ -47,6 +62,8 @@ CMakeFiles/clorox.dir/vm.c.o: \
  ../common.h \
  ../compiler.h \
  ../debug.h \
+ ../memory.h \
+ ../object.h \
  ../value.h \
  ../vm.c \
  ../vm.h

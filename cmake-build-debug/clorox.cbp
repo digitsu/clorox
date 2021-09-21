@@ -108,6 +108,12 @@
 		<Unit filename="/Users/digitsu/CLionProjects/clorox/memory.h">
 			<Option target="clorox"/>
 		</Unit>
+		<Unit filename="/Users/digitsu/CLionProjects/clorox/object.c">
+			<Option target="clorox"/>
+		</Unit>
+		<Unit filename="/Users/digitsu/CLionProjects/clorox/object.h">
+			<Option target="clorox"/>
+		</Unit>
 		<Unit filename="/Users/digitsu/CLionProjects/clorox/scanner.c">
 			<Option target="clorox"/>
 		</Unit>

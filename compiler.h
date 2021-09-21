@@ -5,6 +5,7 @@
 #ifndef CLOROX_COMPILER_H
 #define CLOROX_COMPILER_H
 
+#include "object.h"
 #include "vm.h"
 
 bool compile(const char* source, Chunk* chunk);
