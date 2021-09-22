@@ -15,6 +15,7 @@ set(CMAKE_DEPENDS_CHECK_C
   "/Users/digitsu/CLionProjects/clorox/memory.c" "/Users/digitsu/CLionProjects/clorox/cmake-build-debug/CMakeFiles/clorox.dir/memory.c.o"
   "/Users/digitsu/CLionProjects/clorox/object.c" "/Users/digitsu/CLionProjects/clorox/cmake-build-debug/CMakeFiles/clorox.dir/object.c.o"
   "/Users/digitsu/CLionProjects/clorox/scanner.c" "/Users/digitsu/CLionProjects/clorox/cmake-build-debug/CMakeFiles/clorox.dir/scanner.c.o"
+  "/Users/digitsu/CLionProjects/clorox/table.c" "/Users/digitsu/CLionProjects/clorox/cmake-build-debug/CMakeFiles/clorox.dir/table.c.o"
   "/Users/digitsu/CLionProjects/clorox/value.c" "/Users/digitsu/CLionProjects/clorox/cmake-build-debug/CMakeFiles/clorox.dir/value.c.o"
   "/Users/digitsu/CLionProjects/clorox/vm.c" "/Users/digitsu/CLionProjects/clorox/cmake-build-debug/CMakeFiles/clorox.dir/vm.c.o"
   )

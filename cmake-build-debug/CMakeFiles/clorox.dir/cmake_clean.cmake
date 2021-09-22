@@ -6,6 +6,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/clorox.dir/memory.c.o"
   "CMakeFiles/clorox.dir/object.c.o"
   "CMakeFiles/clorox.dir/scanner.c.o"
+  "CMakeFiles/clorox.dir/table.c.o"
   "CMakeFiles/clorox.dir/value.c.o"
   "CMakeFiles/clorox.dir/vm.c.o"
   "clorox"

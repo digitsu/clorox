@@ -3,4 +3,4 @@ project(clorox C)
 
 set(CMAKE_C_STANDARD 99)
 
-add_executable(clorox main.c common.h chunk.h chunk.c memory.h memory.c debug.h debug.c value.h value.c vm.c vm.h compiler.c compiler.h scanner.c scanner.h object.h object.c)
+add_executable(clorox main.c common.h chunk.h chunk.c memory.h memory.c debug.h debug.c value.h value.c vm.c vm.h compiler.c compiler.h scanner.c scanner.h object.h object.c table.c table.h)

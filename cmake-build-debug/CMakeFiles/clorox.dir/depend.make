@@ -16,6 +16,7 @@ CMakeFiles/clorox.dir/compiler.c.o: \
  ../debug.h \
  ../object.h \
  ../scanner.h \
+ ../table.h \
  ../value.h \
  ../vm.h
 CMakeFiles/clorox.dir/debug.c.o: \
@@ -29,6 +30,7 @@ CMakeFiles/clorox.dir/main.c.o: \
  ../common.h \
  ../debug.h \
  ../main.c \
+ ../table.h \
  ../value.h \
  ../vm.h
 CMakeFiles/clorox.dir/memory.c.o: \
@@ -37,6 +39,7 @@ CMakeFiles/clorox.dir/memory.c.o: \
  ../memory.c \
  ../memory.h \
  ../object.h \
+ ../table.h \
  ../value.h \
  ../vm.h
 CMakeFiles/clorox.dir/object.c.o: \
@@ -45,12 +48,20 @@ CMakeFiles/clorox.dir/object.c.o: \
  ../memory.h \
  ../object.c \
  ../object.h \
+ ../table.h \
  ../value.h \
  ../vm.h
 CMakeFiles/clorox.dir/scanner.c.o: \
  ../common.h \
  ../scanner.c \
  ../scanner.h
+CMakeFiles/clorox.dir/table.c.o: \
+ ../common.h \
+ ../memory.h \
+ ../object.h \
+ ../table.c \
+ ../table.h \
+ ../value.h
 CMakeFiles/clorox.dir/value.c.o: \
  ../common.h \
  ../memory.h \
@@ -64,6 +75,7 @@ CMakeFiles/clorox.dir/vm.c.o: \
  ../debug.h \
  ../memory.h \
  ../object.h \
+ ../table.h \
  ../value.h \
  ../vm.c \
  ../vm.h

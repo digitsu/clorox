@@ -120,6 +120,12 @@
 		<Unit filename="/Users/digitsu/CLionProjects/clorox/scanner.h">
 			<Option target="clorox"/>
 		</Unit>
+		<Unit filename="/Users/digitsu/CLionProjects/clorox/table.c">
+			<Option target="clorox"/>
+		</Unit>
+		<Unit filename="/Users/digitsu/CLionProjects/clorox/table.h">
+			<Option target="clorox"/>
+		</Unit>
 		<Unit filename="/Users/digitsu/CLionProjects/clorox/value.c">
 			<Option target="clorox"/>
 		</Unit>

@@ -6,14 +6,6 @@
 
 #IncludeRegexTransform: 
 
-/Users/digitsu/CLionProjects/clorox/chunk.c
-stdlib.h
--
-chunk.h
-/Users/digitsu/CLionProjects/clorox/chunk.h
-memory.h
-/Users/digitsu/CLionProjects/clorox/memory.h
-
 /Users/digitsu/CLionProjects/clorox/chunk.h
 common.h
 /Users/digitsu/CLionProjects/clorox/common.h
@@ -47,14 +39,6 @@ object.h
 /Users/digitsu/CLionProjects/clorox/object.h
 vm.h
 /Users/digitsu/CLionProjects/clorox/vm.h
-
-/Users/digitsu/CLionProjects/clorox/debug.c
-stdio.h
--
-debug.h
-/Users/digitsu/CLionProjects/clorox/debug.h
-value.h
-/Users/digitsu/CLionProjects/clorox/value.h
 
 /Users/digitsu/CLionProjects/clorox/debug.h
 chunk.h
@@ -99,6 +83,8 @@ memory.h
 /Users/digitsu/CLionProjects/clorox/memory.h
 object.h
 /Users/digitsu/CLionProjects/clorox/object.h
+table.h
+/Users/digitsu/CLionProjects/clorox/table.h
 value.h
 /Users/digitsu/CLionProjects/clorox/value.h
 vm.h
@@ -112,15 +98,23 @@ value.h
 
 /Users/digitsu/CLionProjects/clorox/scanner.h
 
-/Users/digitsu/CLionProjects/clorox/value.c
-stdio.h
+/Users/digitsu/CLionProjects/clorox/table.c
+stdlib.h
 -
 string.h
 -
-object.h
-/Users/digitsu/CLionProjects/clorox/object.h
 memory.h
 /Users/digitsu/CLionProjects/clorox/memory.h
+object.h
+/Users/digitsu/CLionProjects/clorox/object.h
+table.h
+/Users/digitsu/CLionProjects/clorox/table.h
+value.h
+/Users/digitsu/CLionProjects/clorox/value.h
+
+/Users/digitsu/CLionProjects/clorox/table.h
+common.h
+/Users/digitsu/CLionProjects/clorox/common.h
 value.h
 /Users/digitsu/CLionProjects/clorox/value.h
 
@@ -151,6 +145,8 @@ vm.h
 /Users/digitsu/CLionProjects/clorox/vm.h
 chunk.h
 /Users/digitsu/CLionProjects/clorox/chunk.h
+table.h
+/Users/digitsu/CLionProjects/clorox/table.h
 value.h
 /Users/digitsu/CLionProjects/clorox/value.h
 

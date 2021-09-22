@@ -16,6 +16,7 @@ CMakeFiles/clorox.dir/compiler.c.o
  /Users/digitsu/CLionProjects/clorox/debug.h
  /Users/digitsu/CLionProjects/clorox/object.h
  /Users/digitsu/CLionProjects/clorox/scanner.h
+ /Users/digitsu/CLionProjects/clorox/table.h
  /Users/digitsu/CLionProjects/clorox/value.h
  /Users/digitsu/CLionProjects/clorox/vm.h
 CMakeFiles/clorox.dir/debug.c.o
@@ -29,6 +30,7 @@ CMakeFiles/clorox.dir/main.c.o
  /Users/digitsu/CLionProjects/clorox/common.h
  /Users/digitsu/CLionProjects/clorox/debug.h
  /Users/digitsu/CLionProjects/clorox/main.c
+ /Users/digitsu/CLionProjects/clorox/table.h
  /Users/digitsu/CLionProjects/clorox/value.h
  /Users/digitsu/CLionProjects/clorox/vm.h
 CMakeFiles/clorox.dir/memory.c.o
@@ -37,6 +39,7 @@ CMakeFiles/clorox.dir/memory.c.o
  /Users/digitsu/CLionProjects/clorox/memory.c
  /Users/digitsu/CLionProjects/clorox/memory.h
  /Users/digitsu/CLionProjects/clorox/object.h
+ /Users/digitsu/CLionProjects/clorox/table.h
  /Users/digitsu/CLionProjects/clorox/value.h
  /Users/digitsu/CLionProjects/clorox/vm.h
 CMakeFiles/clorox.dir/object.c.o
@@ -45,12 +48,20 @@ CMakeFiles/clorox.dir/object.c.o
  /Users/digitsu/CLionProjects/clorox/memory.h
  /Users/digitsu/CLionProjects/clorox/object.c
  /Users/digitsu/CLionProjects/clorox/object.h
+ /Users/digitsu/CLionProjects/clorox/table.h
  /Users/digitsu/CLionProjects/clorox/value.h
  /Users/digitsu/CLionProjects/clorox/vm.h
 CMakeFiles/clorox.dir/scanner.c.o
  /Users/digitsu/CLionProjects/clorox/common.h
  /Users/digitsu/CLionProjects/clorox/scanner.c
  /Users/digitsu/CLionProjects/clorox/scanner.h
+CMakeFiles/clorox.dir/table.c.o
+ /Users/digitsu/CLionProjects/clorox/common.h
+ /Users/digitsu/CLionProjects/clorox/memory.h
+ /Users/digitsu/CLionProjects/clorox/object.h
+ /Users/digitsu/CLionProjects/clorox/table.c
+ /Users/digitsu/CLionProjects/clorox/table.h
+ /Users/digitsu/CLionProjects/clorox/value.h
 CMakeFiles/clorox.dir/value.c.o
  /Users/digitsu/CLionProjects/clorox/common.h
  /Users/digitsu/CLionProjects/clorox/memory.h
@@ -64,6 +75,7 @@ CMakeFiles/clorox.dir/vm.c.o
  /Users/digitsu/CLionProjects/clorox/debug.h
  /Users/digitsu/CLionProjects/clorox/memory.h
  /Users/digitsu/CLionProjects/clorox/object.h
+ /Users/digitsu/CLionProjects/clorox/table.h
  /Users/digitsu/CLionProjects/clorox/value.h
  /Users/digitsu/CLionProjects/clorox/vm.c
  /Users/digitsu/CLionProjects/clorox/vm.h
