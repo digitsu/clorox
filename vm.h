@@ -16,7 +16,8 @@ typedef struct {
     uint8_t* ip;
     Value stack[STACK_MAX]; // declared and allocate already
     Value* stackTop;
-    Table strings;
+    Table globals; // all the globals
+    Table strings; // interned strings
     Obj* objects;
 } VM;
 

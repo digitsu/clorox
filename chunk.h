@@ -13,6 +13,10 @@ typedef enum {
     OP_NIL,
     OP_TRUE,
     OP_FALSE,
+    OP_POP,
+    OP_GET_GLOBAL,
+    OP_DEFINE_GLOBAL,
+    OP_SET_GLOBAL,
     OP_EQUAL,
     OP_GREATER,
     OP_LESS,
@@ -22,6 +26,7 @@ typedef enum {
     OP_DIVIDE,
     OP_NOT,
     OP_NEGATE,
+    OP_PRINT,
     OP_RETURN,
 } OpCode;
 
@@ -30,7 +35,7 @@ typedef struct {
     int capacity;
     uint8_t* code;
     int* lines; // don't need its own struct because it parallels and thus shares count and capacity with code
-    ValueArray constants;
+    ValueArray constants; // just an array of constants, accessed via index
 } Chunk;
 
 void initChunk(Chunk* chunk);
