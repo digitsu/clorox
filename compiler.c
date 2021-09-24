@@ -191,7 +191,7 @@ static int resolveLocal(Compiler* compiler, Token* name) {
         Local* local = &compiler->locals[i];
         if (identifiersEqual(name, &local->name)) {
             if (local->depth == -1) {
-                error("Can't read local variable in its own initializer.");
+                error("Can't read local variable in its own initializer. i.e. var a = a; not allowed");
             }
             return i;
         }
