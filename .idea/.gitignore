@@ -6,3 +6,9 @@
 /dataSources.local.xml
 # Editor-based HTTP Client requests
 /httpRequests/
+# Intermediate and built stuff.
+/cmake-build-debug/
+# I keep a scratch file at the top level to try stuff out.
+temp.lox
+/cmake-build-debug/
+*.o
