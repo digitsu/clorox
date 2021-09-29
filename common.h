@@ -11,8 +11,8 @@
 
 #define DEBUG_PRINT_CODE
 #define DEBUG_TRACE_EXECUTION
-#undef DEBUG_TRACE_EXECUTION // comment out for stack tracing
-//#undef DEBUG_PRINT_CODE // comment out for code compile outputs
+//#define DEBUG_STRESS_GC
+#define DEBUG_LOG_GC
 
 #define UINT8_COUNT (UINT8_MAX + 1)
 
