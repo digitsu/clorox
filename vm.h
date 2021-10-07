@@ -26,6 +26,7 @@ typedef struct {
     Value* stackTop;
     Table globals; // all the globals
     Table strings; // interned strings
+    ObjString* initString; // interned 'init' string for object initializers
     ObjUpvalue* openUpvalues;
     size_t bytesAllocated;
     size_t nextGC;
