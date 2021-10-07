@@ -74,6 +74,7 @@ typedef struct Compiler {
 
 typedef struct ClassCompiler {
     struct ClassCompiler* enclosing;
+    bool hasSuperclass;
 } ClassCompiler;
 
 Parser parser;
@@ -327,7 +328,7 @@ static void addLocal(Token name) {
         return;
     }
 
-    Local* local = &current->locals[current->localCount++]; // the reason this doesn't need allocation is because locals is fully allocated array in the compiler
+    Local* local = &current->locals[current->localCount++]; // the reason this doesn't need allocation is that locals is fully allocated array in the compiler
     local->name = name;
     local->depth = -1; // sentinel value for variables in uninitialized state
     local->isCaptured = false;
@@ -503,7 +504,7 @@ static void namedVariable(Token name, bool canAssign) {
     }
 
     if (canAssign && match(TOKEN_EQUAL)) {
-        expression(); // this is the part where we evaluate the right of the '=' assignement expression statement
+        expression(); // this is the part where we evaluate the right of the '=' assignment expression statement
         emitBytes(setOp, (uint8_t)arg);
     } else {
         emitBytes(getOp, (uint8_t)arg);
@@ -512,6 +513,36 @@ static void namedVariable(Token name, bool canAssign) {
 
 static void variable(bool canAssign) {
     namedVariable(parser.previous, canAssign);
+}
+
+static Token syntheticToken(const char* text) {
+    Token token;
+    token.start = text;
+    token.length = (int)strlen(text);
+    return token;
+}
+
+static void super_(bool canAssign) {
+    if (currentClass == NULL) {
+        error("Can't use 'super' outside of a class.");
+    } else if (!currentClass->hasSuperclass) {
+        error("Can't use 'super' in a class with no superclass.");
+    }
+
+    consume(TOKEN_DOT, "Expect '.' after 'super'.");
+    consume(TOKEN_IDENTIFIER, "Expect superclass method name.");
+    uint8_t name = identifierConstant(&parser.previous);
+
+    namedVariable(syntheticToken("this"), false);
+    if (match(TOKEN_LEFT_PAREN)) { // if invoking the super method immediately
+        uint8_t argCount = argumentList();
+        namedVariable(syntheticToken("super"), false); // this puts the superclass onto the VM stack
+        emitBytes(OP_SUPER_INVOKE, name);
+        emitByte(argCount);
+    } else { // if the rare case of just stashing away the method to be called later
+        namedVariable(syntheticToken("super"), false);
+        emitBytes(OP_GET_SUPER, name);
+    }
 }
 
 static void this_(bool canAssign) {
@@ -571,7 +602,7 @@ ParseRule rules[] = {
     [TOKEN_OR]              = {NULL, or_, PREC_OR},
     [TOKEN_PRINT]           = {NULL, NULL, PREC_NONE},
     [TOKEN_RETURN]          = {NULL, NULL, PREC_NONE},
-    [TOKEN_SUPER]           = {NULL, NULL, PREC_NONE},
+    [TOKEN_SUPER]           = {super_, NULL, PREC_NONE},
     [TOKEN_THIS]            = {this_, NULL, PREC_NONE},
     [TOKEN_TRUE]            = {literal, NULL, PREC_NONE},
     [TOKEN_VAR]             = {NULL, NULL, PREC_NONE},
@@ -662,7 +693,7 @@ static void method() {
 
 static void classDeclaration() {
     consume(TOKEN_IDENTIFIER, "Expect class name.");
-    Token classname = parser.previous; // grab the name of the class
+    Token className = parser.previous; // grab the name of the class
     uint8_t nameConstant = identifierConstant(&parser.previous);
     declareVariable();
 
@@ -671,16 +702,38 @@ static void classDeclaration() {
 
     // string the new compiler into the list of classes
     ClassCompiler classCompiler;
+    classCompiler.hasSuperclass = false;
     classCompiler.enclosing = currentClass;
     currentClass = &classCompiler;
 
-    namedVariable(classname, false); // loads the classname back to the top of the stack
+    if (match(TOKEN_LESS)) { // inheritance
+        consume(TOKEN_IDENTIFIER, "Expect superclass name.");
+        variable(false); // load up the previously mentioned identifier ie superclass
+
+        if (identifiersEqual(&className, &parser.previous)) {
+            error("A class can't inherit from itself.");
+        }
+
+        beginScope(); // put the superclass onto local scope under a token name 'super'
+        addLocal(syntheticToken("super")); // a lexeme in the C string literal part of the binary executable constant data section, so no worries about leaking
+        defineVariable(0); // push onto current closure's local, it is already loaded due to the variable() call above.
+
+        namedVariable(className, false); // load up the current identifier class
+        emitByte(OP_INHERIT);
+        classCompiler.hasSuperclass = true;
+    }
+
+    namedVariable(className, false); // loads the classname back to the top of the stack
     consume(TOKEN_LEFT_BRACE, "Expect '{' before class body.");
     while (!check(TOKEN_RIGHT_BRACE) && !check(TOKEN_EOF)) {
         method();
     }
     consume(TOKEN_RIGHT_BRACE, "Expect '}' after class body.");
     emitByte(OP_POP); // this is after the VM is done processing all the OP_METHODS, remove the class name from stack
+
+    if (classCompiler.hasSuperclass) {
+        endScope();
+    }
 
     // pop back the previous class compiler
     currentClass = currentClass->enclosing;

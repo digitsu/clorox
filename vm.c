@@ -184,9 +184,9 @@ static bool bindMethod(ObjClass* klass, ObjString* name) {
         return false;
     }
 
-    ObjBoundMethod* bound = newBoundMethod(peek(0), AS_CLOSURE(method));
-    pop();
-    push(OBJ_VAL(bound));
+    ObjBoundMethod* bound = newBoundMethod(peek(0), AS_CLOSURE(method)); // remember that peek(0) holds the instance at top of stack
+    pop(); // pop the receiver
+    push(OBJ_VAL(bound)); // push the newly bound method instead
     return true;
 }
 
@@ -370,6 +370,15 @@ static InterpretResult run() {
                 push(value);
                 break;
             }
+            case OP_GET_SUPER: {
+                ObjString* name = READ_STRING(); // method name
+                ObjClass* superclass = AS_CLASS(pop());
+
+                if (!bindMethod(superclass, name)) {
+                    return INTERPRET_RUNTIME_ERROR;
+                }
+                break;
+            }
             case OP_EQUAL: {
                 Value b = pop();
                 Value a = pop();
@@ -443,6 +452,16 @@ static InterpretResult run() {
                 frame = &vm.frames[vm.frameCount - 1]; // set the frame back to before the function was invoked
                 break;
             }
+            case OP_SUPER_INVOKE: { // this is the same as a OP_GET_SUPER and OP_CALL
+                ObjString* method = READ_STRING();
+                int argCount = READ_BYTE();
+                ObjClass* superclass = AS_CLASS(pop());
+                if (!invokeFromClass(superclass, method, argCount)) {
+                    return INTERPRET_RUNTIME_ERROR;
+                }
+                frame = &vm.frames[vm.frameCount - 1]; // finish the call pop the frame
+                break;
+            }
             case OP_CLOSURE: {
                 ObjFunction* function = AS_FUNCTION(READ_CONSTANT());
                 ObjClosure* closure = newClosure(function);
@@ -480,6 +499,17 @@ static InterpretResult run() {
             case OP_CLASS:
                 push(OBJ_VAL(newClass(READ_STRING())));
                 break;
+            case OP_INHERIT: {
+                Value superclass = peek(1);
+                if (!IS_CLASS(superclass)) {
+                    runtimeError("Superclass must be a class.");
+                    return INTERPRET_RUNTIME_ERROR;
+                }
+                ObjClass *subclass = AS_CLASS(peek(0));
+                tableAddAll(&AS_CLASS(superclass)->methods, &subclass->methods);
+                pop();
+                break;
+            }
             case OP_METHOD:
                 defineMethod(READ_STRING());
                 break;
@@ -496,7 +526,7 @@ InterpretResult interpret(const char* source) {
     ObjFunction* function = compile(source);
     if (function == NULL) return INTERPRET_COMPILE_ERROR;
 
-    push(OBJ_VAL(function)); // the function object goes on the VM stack
+    push(OBJ_VAL(function)); // the function object goes on the VM stack -- GC paranoia
     ObjClosure* closure = newClosure(function);
     pop(); // GC paranoia
     push(OBJ_VAL(closure));
